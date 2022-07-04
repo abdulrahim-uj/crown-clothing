@@ -7,13 +7,10 @@ import './navigation.styles.scss';
 
 const Navigation = () => {
     // ACCESSING THE CURRENT USER DATA FROM USERCONTEXT
-    const { currentUser, setCurrentUser } = useContext(UserContext);
-    console.log('ACTUAL VALUE OF CURRENT USER: : : ', currentUser);
+    const { currentUser } = useContext(UserContext);
 
     const signOutHandler = async () => {
         await signOutUser();
-        // set current user initial value / clear all context values...
-        setCurrentUser(null);
     }
 
     return (

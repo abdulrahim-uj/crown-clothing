@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth,
@@ -6,7 +6,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import './sign-up-form.styles.scss';
 import Button from "../button/button.component";
-import { UserContext } from "../../contexts/user.context";
+// import { UserContext } from "../../contexts/user.context";
 
 // SET DEFAULT VALUES ON COMPONENT DID MOUNT TIME
 const defaultFormFields = {
@@ -23,7 +23,7 @@ const SignUpForm = () => {
     const { displayName, email, password, conformPassword } = formFields;
 
     // USING CONTEXT its using when user sign up to set the current user from the response
-    const { setCurrentUser } = useContext(UserContext);
+    // const { setCurrentUser } = useContext(UserContext);
 
     // ON CHANGE HANDLER TRIGGERING EVERY KEY PRESS ON INPUT FILEDS
     const onChangeHandler = (event) => {
@@ -56,7 +56,7 @@ const SignUpForm = () => {
             );
 
             // set currentuser data
-            setCurrentUser(user);
+            // setCurrentUser(user);
             
             // PASSING RESPONSE.USER VALUES AND EXTRA CUSTOM VALUE 'DISPLAY NAME'
             await createUserDocumentFromAuth(user, { displayName });

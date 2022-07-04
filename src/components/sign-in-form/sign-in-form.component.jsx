@@ -1,13 +1,11 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
     signInWithGooglePopup,
-    createUserDocumentFromAuth,
     signInUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-in-form.styles.scss';
 import Button from "../button/button.component";
-import { UserContext } from "../../contexts/user.context";
 
 // SET DEFAULT VALUES ON COMPONENT DID MOUNT TIME
 const defaultFormFields = {
@@ -21,9 +19,6 @@ const SignInForm = () => {
     // DEPRECATED VALUES FROM FORMFIELDS
     const { email, password } = formFields;
 
-    // USING CONTEXT its using when user sign in to set the current user from the response
-    const { setCurrentUser } = useContext(UserContext);
-
     // ON CHANGE HANDLER TRIGGERING EVERY KEY PRESS ON INPUT FILEDS
     const onChangeHandler = (event) => {
         // const name = event.target.name;      // ASSIGN VALUES TO VARIALBE NAME IN DEFAULT PROCEDURE
@@ -33,13 +28,7 @@ const SignInForm = () => {
     };
     // SIGN IN WITH GOOGLE ON CLICK BUTTON
     const signInWithGoogle = async () => {
-        const response = await signInWithGooglePopup();
-        console.log(response);
-        
-        // SET CURRENT USER FROM RESPONSE.USER WHILE AUTHENTICATED
-        setCurrentUser(response.user);
-
-        await createUserDocumentFromAuth(response.user);
+        await signInWithGooglePopup();
     };
 
     // FORM RESET AFTER FORM SUBMITION SUCCESS MESSAGE
@@ -53,9 +42,6 @@ const SignInForm = () => {
         try {
             const response = await signInUserWithEmailAndPassword(email, password);
             console.log('signinsuccess: : : ', response);
-            
-            // SET CURRENT USER FROM RESPONSE.USER WHILE AUTHENTICATED
-            setCurrentUser(response.user);
 
             alert('Successfully login');
             // CALLING RESET FORM FUNCTION
