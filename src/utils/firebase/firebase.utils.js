@@ -9,7 +9,14 @@ import {
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    collection,
+    writeBatch,
+} from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDc_OpxaFAuGnICYOY1HbiwCve8fqnBiF8",
@@ -39,6 +46,19 @@ export const signInWithGoogleRedirect = () => {
 };
 
 export const dbCon = getFirestore();
+
+// upload SHOP_DATA "shop-data.js" to firebase database firestore using collection, writeBatch methods from firestore
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = collection(dbCon, collectionKey);
+    const batch = writeBatch(dbCon);
+    objectsToAdd.forEach((object) => {
+        // object: Hats,Shirts, Womens, Mens, boys, ... 
+        const docRef = doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+    });
+    await batch.commit();
+    alert('Data saved done...');
+};
 
 export const createUserDocumentFromAuth = async (
     userAuth,
@@ -93,5 +113,5 @@ export const signOutUser = async () => {
 };
 
 export const onAuthStateChangedListner = (callback) => {
-    return onAuthStateChanged(auth, callback);   
-}
+    return onAuthStateChanged(auth, callback);
+};

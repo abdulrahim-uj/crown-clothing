@@ -1,0 +1,428 @@
+const SHOP_DATA = [
+    {
+        title: "Hats",
+        items: [
+            {
+                id: 1,
+                name: "Brown Brim",
+                imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+                price: 25,
+            },
+            {
+                id: 2,
+                name: "Blue Beanie",
+                imageUrl: "https://i.ibb.co/ypkgK0X/blue-beanie.png",
+                price: 18,
+            },
+            {
+                id: 3,
+                name: "Brown Cowboy",
+                imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
+                price: 35,
+            },
+            {
+                id: 4,
+                name: "Grey Brim",
+                imageUrl: "https://i.ibb.co/RjBLWxB/grey-brim.png",
+                price: 25,
+            },
+            {
+                id: 5,
+                name: "Green Beanie",
+                imageUrl: "https://i.ibb.co/YTjW3vF/green-beanie.png",
+                price: 18,
+            },
+            {
+                id: 6,
+                name: "Palm Tree Cap",
+                imageUrl: "https://i.ibb.co/rKBDvJX/palm-tree-cap.png",
+                price: 14,
+            },
+            {
+                id: 7,
+                name: "Red Beanie",
+                imageUrl: "https://i.ibb.co/bLB646Z/red-beanie.png",
+                price: 18,
+            },
+            {
+                id: 8,
+                name: "Wolf Cap",
+                imageUrl: "https://i.ibb.co/1f2nWMM/wolf-cap.png",
+                price: 14,
+            },
+            {
+                id: 9,
+                name: "Blue Snapback",
+                imageUrl: "https://i.ibb.co/X2VJP2W/blue-snapback.png",
+                price: 16,
+            },
+        ],
+    },
+    {
+        title: "Sneakers",
+        items: [
+            {
+                id: 10,
+                name: "Adidas NMD",
+                imageUrl: "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
+                price: 220,
+            },
+            {
+                id: 11,
+                name: "Adidas Yeezy",
+                imageUrl: "https://i.ibb.co/dJbG1cT/yeezy.png",
+                price: 280,
+            },
+            {
+                id: 12,
+                name: "Black Converse",
+                imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
+                price: 110,
+            },
+            {
+                id: 13,
+                name: "Nike White AirForce",
+                imageUrl: "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+                price: 160,
+            },
+            {
+                id: 14,
+                name: "Nike Red High Tops",
+                imageUrl: "https://i.ibb.co/QcvzydB/nikes-red.png",
+                price: 160,
+            },
+            {
+                id: 15,
+                name: "Nike Brown High Tops",
+                imageUrl: "https://i.ibb.co/fMTV342/nike-brown.png",
+                price: 160,
+            },
+            {
+                id: 16,
+                name: "Air Jordan Limited",
+                imageUrl: "https://i.ibb.co/w4k6Ws9/nike-funky.png",
+                price: 190,
+            },
+            {
+                id: 17,
+                name: "Timberlands",
+                imageUrl: "https://i.ibb.co/Mhh6wBg/timberlands.png",
+                price: 200,
+            },
+        ],
+    },
+    {
+        title: "Jackets",
+        items: [
+            {
+                id: 18,
+                name: "Black Jean Shearling",
+                imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
+                price: 125,
+            },
+            {
+                id: 19,
+                name: "Blue Jean Jacket",
+                imageUrl: "https://i.ibb.co/mJS6vz0/blue-jean-jacket.png",
+                price: 90,
+            },
+            {
+                id: 20,
+                name: "Grey Jean Jacket",
+                imageUrl: "https://i.ibb.co/N71k1ML/grey-jean-jacket.png",
+                price: 90,
+            },
+            {
+                id: 21,
+                name: "Brown Shearling",
+                imageUrl: "https://i.ibb.co/s96FpdP/brown-shearling.png",
+                price: 165,
+            },
+            {
+                id: 22,
+                name: "Tan Trench",
+                imageUrl: "https://i.ibb.co/M6hHc3F/brown-trench.png",
+                price: 185,
+            },
+        ],
+    },
+    {
+        title: "Womens",
+        items: [
+            {
+                id: 23,
+                name: "Blue Tanktop",
+                imageUrl: "https://i.ibb.co/7CQVJNm/blue-tank.png",
+                price: 25,
+            },
+            {
+                id: 24,
+                name: "Floral Blouse",
+                imageUrl: "https://i.ibb.co/4W2DGKm/floral-blouse.png",
+                price: 20,
+            },
+            {
+                id: 25,
+                name: "Floral Dress",
+                imageUrl: "https://i.ibb.co/KV18Ysr/floral-skirt.png",
+                price: 80,
+            },
+            {
+                id: 26,
+                name: "Red Dots Dress",
+                imageUrl: "https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png",
+                price: 80,
+            },
+            {
+                id: 27,
+                name: "Striped Sweater",
+                imageUrl: "https://i.ibb.co/KmSkMbH/striped-sweater.png",
+                price: 45,
+            },
+            {
+                id: 28,
+                name: "Yellow Track Suit",
+                imageUrl: "https://i.ibb.co/v1cvwNf/yellow-track-suit.png",
+                price: 135,
+            },
+            {
+                id: 29,
+                name: "White Blouse",
+                imageUrl: "https://i.ibb.co/qBcrsJg/white-vest.png",
+                price: 20,
+            },
+        ],
+    },
+    {
+        title: "Mens",
+        items: [
+            {
+                id: 30,
+                name: "Camo Down Vest",
+                imageUrl: "https://i.ibb.co/xJS0T3Y/camo-vest.png",
+                price: 325,
+            },
+            {
+                id: 31,
+                name: "Floral T-shirt",
+                imageUrl: "https://i.ibb.co/qMQ75QZ/floral-shirt.png",
+                price: 20,
+            },
+            {
+                id: 32,
+                name: "Black & White Longsleeve",
+                imageUrl: "https://i.ibb.co/55z32tw/long-sleeve.png",
+                price: 25,
+            },
+            {
+                id: 33,
+                name: "Pink T-shirt",
+                imageUrl: "https://i.ibb.co/RvwnBL8/pink-shirt.png",
+                price: 25,
+            },
+            {
+                id: 34,
+                name: "Jean Long Sleeve",
+                imageUrl: "https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png",
+                price: 40,
+            },
+            {
+                id: 35,
+                name: "Burgundy T-shirt",
+                imageUrl: "https://i.ibb.co/mh3VM1f/polka-dot-shirt.png",
+                price: 25,
+            },
+        ],
+    },
+    {
+        title: "Babies",
+        items: [
+            {
+                id: 36,
+                name: "Pink Blue",
+                imageUrl: "https://images-eu.ssl-images-amazon.com/images/I/51V9-V1eDKL._AC._SR360,460.jpg",
+                price: 330,
+            },
+            {
+                id: 37,
+                name: "Ligh Rose Leaf",
+                imageUrl: "https://m.media-amazon.com/images/I/61pZFOaMihL._SX569_.jpg",
+                price: 200,
+            },
+            {
+                id: 38,
+                name: "Balck Meroone",
+                imageUrl: "https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/15670/149917/Fashion-Baby-Girl-Dress-Spring-Autumn-Baby-Dress-for-Girls-and-PU-Leather-Coat-Baby-Girl__73825.1544611597.jpg",
+                price: 250,
+            },
+            {
+                id: 39,
+                name: "White and Blue",
+                imageUrl: "https://rukminim1.flixcart.com/image/332/398/kfmv9u80/kids-dress/b/3/m/1-2-years-girls-168-new-gen-original-imafw249wjqdgxwp.jpeg",
+                price: 250,
+            },
+            {
+                id: 40,
+                name: "Night",
+                imageUrl: "https://5.imimg.com/data5/TR/TO/MY-24172193/just-born-babies-dress-500x500.jpg",
+                price: 100,
+            },
+            {
+                id: 41,
+                name: "Bridel Pink",
+                imageUrl: "https://m.media-amazon.com/images/I/71h4COXWveL._UX569_.jpg",
+                price: 500,
+            },
+            {
+                id: 42,
+                name: "Night Boy",
+                imageUrl: "https://rukminim1.flixcart.com/image/332/398/ky1vl3k0/baby-care-combo/t/a/d/new-born-baby-winter-clothes-5pcs-sets-cotton-baby-boys-girls-original-imag9syzygyhzyng.jpeg",
+                price: 100,
+            },
+            {
+                id: 43,
+                name: "Silver Light",
+                imageUrl: "https://i0.wp.com/www.baptismdressindia.com/wp-content/uploads/2021/04/Mark-Silver-Romper-scaled.jpg",
+                price: 150,
+            },
+            {
+                id: 44,
+                name: "Rampage Freake",
+                imageUrl: "https://static.hopscotch.in/fstatic/product/201808/809f3ce8-50f2-4408-aafb-6511871121bf_large.jpg",
+                price: 200,
+            },
+            {
+                id: 45,
+                name: "Romper Boy",
+                imageUrl: "https://www.baptismdressindia.com/wp-content/uploads/2020/03/BC-005-Blue-White-Christening-Romper-for-Baby-Boy.jpg",
+                price: 180,
+            },
+            {
+                id: 46,
+                name: "Winter King",
+                imageUrl: "https://rukminim1.flixcart.com/image/332/398/kxrvi4w0/kids-apparel-combo/d/z/t/0-3-months-new-born-baby-winter-wear-keep-warm-cartoon-printing-original-imag9bz7tgtgqgrt.jpeg",
+                price: 350,
+            },
+        ],
+    },
+    {
+        title: "Groceries",
+        items: [
+            {
+                id: 47,
+                name: "Green Papper",
+                imageUrl: "https://sob-prd-cdn-products.azureedge.net/media/image/product/en/large/0000000003120.jpg",
+                price: 25,
+            },
+            {
+                id: 48,
+                name: "Carrot",
+                imageUrl: "https://images.unsplash.com/photo-1633380110125-f6e685676160?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbnRlciUyMHZlZ2V0YWJsZXN8ZW58MHx8MHx8&w=1000&q=80",
+                price: 20,
+            },
+            {
+                id: 49,
+                name: "Korean Flower",
+                imageUrl: "https://www.gardeningknowhow.com/wp-content/uploads/2015/04/secondary-edible-parts.jpg",
+                price: 25,
+            },
+            {
+                id: 50,
+                name: "Potato",
+                imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2020%2F04%2F15%2FGettyImages-1083395560-2000.jpg&q=60",
+                price: 25,
+            },
+            {
+                id: 51,
+                name: "Kaly Hype Leaf",
+                imageUrl: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2016/07/kaleHype-182668418-770x533-1.jpg",
+                price: 40,
+            },
+            {
+                id: 52,
+                name: "Egg Plant",
+                imageUrl: "https://cdn.britannica.com/64/143464-050-B0EC6714/Eggplant.jpg",
+                price: 25,
+            },
+            {
+                id: 53,
+                name: "Kantola",
+                imageUrl: "https://imgcdn.floweraura.com/know-the-health-benefits-of-kantola-vegetable.jpg",
+                price: 25,
+            },
+            {
+                id: 54,
+                name: "Lady Finger",
+                imageUrl: "https://english.cdn.zeenews.com/sites/default/files/2016/04/06/476563-ladyfinger-2.jpg",
+                price: 20,
+            },
+            {
+                id: 55,
+                name: "Coaling Flower",
+                imageUrl: "https://marvel-b1-cdn.bc0a.com/f00000000164722/www.udel.edu/content/udel/en/academics/colleges/canr/news/2022/march/spring-vegetable-planting-changing-climate/_jcr_content/portalPostImage.img.jpg/1647532705298.jpg",
+                price: 25,
+            },
+            {
+                id: 56,
+                name: "Tomato",
+                imageUrl: "https://entrenosotros.consum.es/public/Image/2018/8/tomatefrutaoverdura1.jpg",
+                price: 25,
+            },
+            {
+                id: 57,
+                name: "Broccoli",
+                imageUrl: "https://www.knowyourproduce.com/wp-content/uploads/2019/01/steamed-broccoli-12-500x375.jpg",
+                price: 40,
+            },
+        ],
+    },
+    {
+        title: "Electronics",
+        items: [
+            {
+                id: 58,
+                name: "Samsung",
+                imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/in/2202/gallery/in-galaxy-a53-5g-a536-sm-a536elbdins-thumb-531436088?$320_320_PNG$",
+                price: 5000,
+            },
+            {
+                id: 59,
+                name: "Vivo",
+                imageUrl: "https://st1.bgr.in/wp-content/uploads/2022/06/pictures149274-v1-vivo-v25-5g-mobile-phone-large-1-18.jpg",
+                price: 2000,
+            },
+            {
+                id: 60,
+                name: "Oppo",
+                imageUrl: "https://5.imimg.com/data5/SELLER/Default/2021/1/HK/LE/LL/1073409/oppo-mobile-a9-2020-500x500.jpg",
+                price: 2500,
+            },
+            {
+                id: 61,
+                name: "Dell",
+                imageUrl: "https://chamacomputers.lk/api/img/products/product_2156_1.png",
+                price: 3500,
+            },
+            {
+                id: 62,
+                name: "Lenovo",
+                imageUrl: "https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg",
+                price: 4000,
+            },
+            {
+                id: 63,
+                name: "HP",
+                imageUrl: "https://d1pc5hp1w29h96.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/3/V/3V8J7LA-1_T1648846189.png",
+                price: 6000,
+            },
+            {
+                id: 64,
+                name: "Mac",
+                imageUrl: "https://www.digitaltrends.com/wp-content/uploads/2021/11/macbook-pro-2021-16.jpg?",
+                price: 7000,
+            },
+        ],
+    },
+];
+
+export default SHOP_DATA;
