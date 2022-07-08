@@ -16,6 +16,8 @@ import {
     setDoc,
     collection,
     writeBatch,
+    query, 
+    getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -58,6 +60,49 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     });
     await batch.commit();
     alert('Data saved done...');
+};
+
+// GET CATEGORIES AND DOCUMENTS FROM FIRESTORE DATABSE SUPPORT OF query & getDocs
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(dbCon, 'categories');
+    // query method
+    const query_1 = query(collectionRef);
+    // using snapshot
+    const querySnapshot = await getDocs(query_1);
+    const categoryMap = querySnapshot.docs.reduce((accumilator, docSnapshot) => {
+        /*
+        {
+            hats: {
+                title: "Hats",
+                items: [
+                    {
+                        id: 1,
+                        name: "Brown Brim",
+                        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+                        price: 25,
+                    },
+                    {...}...
+                ] 
+            },
+            sneakers: {
+                title: "Sneakers",
+                items: [
+                    {
+                        id: 1,
+                        name: "Brown Brim",
+                        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+                        price: 25,
+                    },
+                    {...}...
+                ] 
+            },
+        */
+        // De structure the items
+        const { title, items } = docSnapshot.data();
+        accumilator[title.toLowerCase()] = items;
+        return accumilator;
+    }, {});
+    return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (
