@@ -1,6 +1,6 @@
 import "./category.styles.scss";
 import { useParams } from 'react-router-dom';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, Fragment } from "react";
 import { CategoriesContext } from "../../contexts/categories.context";
 import ProductCard from "../../components/product-card/product-card.component";
 
@@ -20,14 +20,17 @@ const Category = () => {
     [paramCategory, categoriesMap]);
 
     return (
-        <div className="category-container">
-            {
-                // products & product.map : only render products.map on products have values 
-                products && products.map((product) => {
-                    return <ProductCard key={product.id} productData={product} />
-                })
-            }
-        </div>
+        <Fragment>
+            <h2 className="category-title">{paramCategory.toUpperCase()}</h2>
+            <div className="category-container">
+                {
+                    // products & product.map : only render products.map on products have values 
+                    products && products.map((product) => {
+                        return <ProductCard key={product.id} productData={product} />
+                    })
+                }
+            </div>
+        </Fragment>
     );
 };
 
