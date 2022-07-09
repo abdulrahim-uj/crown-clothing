@@ -4,15 +4,15 @@ import { createContext, useState, useEffect } from "react";
 // import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils";
 
-export const ProductsContext = createContext(
+export const CategoriesContext = createContext(
     // SET INITIAL VALUES
     {
-        products: [],   //an empty array
+        categoriesMap: {},   //an empty object
     }
 );
 
-export const ProductsProvider = ({children}) => {
-    const [products, setProducts] = useState([]);
+export const CategoriesProvider = ({children}) => {
+    const [categoriesMap, setCategoriesMap] = useState({});
 
     // ITS NEED ONLY ONE TIME JUST STORE THAT DATA ONCE RELOAD...
     // useEffect(() => {
@@ -24,14 +24,14 @@ export const ProductsProvider = ({children}) => {
         // using because of calling async function...
         const getCategoriesMap = async () => {
             const categoryMap = await getCategoriesAndDocuments();
-            console.log('categoryMap : : : ', categoryMap);
+            setCategoriesMap(categoryMap);
         };
-        
+
         getCategoriesMap();
     }, []);
 
-    const value = {products};
+    const value = {categoriesMap};
     return (
-        <ProductsContext.Provider value={value}> {children} </ProductsContext.Provider>
+        <CategoriesContext.Provider value={value}> {children} </CategoriesContext.Provider>
     )
 }
