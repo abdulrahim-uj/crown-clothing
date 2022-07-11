@@ -1,4 +1,4 @@
-import './form-input.styles.scss';
+import { FormInputLabel, Group, Input } from './form-input.styles';
 
 const FormInput = ({ label, ...otherProps }) => {
     // ...OTHERPROPS GET ALL PASSING VALUES LIKE BELOW, TYPE, NAME, REQUIRED, VALUES, ONCHANGE & LABEL PASSED SEPERATE...
@@ -11,16 +11,16 @@ const FormInput = ({ label, ...otherProps }) => {
     //     onChange={onChangeHandler}
     // />
     return (
-        <div className="group">
-            <input className="form-input" {...otherProps} />
+        <Group>
+            <Input {...otherProps} />
             {
                 // IF LABEL IS AVAILABLE, THEN ONLY WORK BELOW CODE
                 label && (
                     // STRING INTERPOLATED STRING ON CLASSNAME
-                    <label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>{label}</label>
+                    <FormInputLabel shrink={otherProps.value.length}>{label}</FormInputLabel>
                 )
             }
-        </div>
+        </Group>
     );
 };
 
