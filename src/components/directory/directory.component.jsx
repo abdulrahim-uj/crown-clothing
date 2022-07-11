@@ -1,7 +1,62 @@
 import DirectoryItem from "../directory-item/directory-item.component";
 import "./directory.styles.scss";
 
-const Directory = ({propsCategories}) => {
+const propsCategories = [
+    {
+        id: 1,
+        title: "Hats",
+        imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+        route: 'shop/hats',
+    },
+    {
+        id: 2,
+        title: "Jackets",
+        imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+        route: 'shop/jackets',
+    },
+    {
+        id: 3,
+        title: "Sneakers",
+        imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+        route: 'shop/sneakers',
+    },
+    {
+        id: 4,
+        title: "Babies",
+        imageUrl:
+            "https://i.pinimg.com/originals/9d/6c/db/9d6cdb45ff7b3400b2a5bb9a8cdc5775.png",
+        route: 'shop/babies',
+    },
+    {
+        id: 5,
+        title: "Womens",
+        imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+        route: 'shop/womens',
+    },
+    {
+        id: 6,
+        title: "Mens",
+        imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+        route: 'shop/mens',
+    },
+    {
+        id: 7,
+        title: "Groceries",
+        imageUrl:
+            "https://toppng.com/uploads/preview/grocery-png-11553955872cerceh5w5f.png",
+        route: 'shop/groceries',
+    },
+    {
+        id: 8,
+        title: "Electronics",
+        imageUrl:
+            "https://w7.pngwing.com/pngs/454/1021/png-transparent-consumer-electronics-gadget-advanced-electronics-electronic-component-others-electronics-laptop-electronic-device.png",
+        route: 'shop/electronics',
+    },
+];
+
+const Directory = () => {
+    
     return (
         <div className="directory-container">
             {propsCategories.map((category) => (
