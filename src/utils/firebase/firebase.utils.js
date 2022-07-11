@@ -113,10 +113,9 @@ export const createUserDocumentFromAuth = async (
         return;
     }
     const userDocRef = doc(dbCon, "users", userAuth.uid);
-    console.log(userDocRef);
+
     const userSnapshot = await getDoc(userDocRef);
-    console.log(userSnapshot);
-    console.log(userSnapshot.exists());
+    
     // if user data does not exist
     // create/setthe document with the data from userAuth in my collection
     if (!userSnapshot.exists()) {
@@ -130,7 +129,7 @@ export const createUserDocumentFromAuth = async (
                 ...additionalInformation,
             });
         } catch (error) {
-            console.log("error creating the user", error.message);
+            alert(error.message);
         }
     }
     // if user data exist

@@ -41,7 +41,6 @@ const SignInForm = () => {
 
         try {
             const response = await signInUserWithEmailAndPassword(email, password);
-            console.log('signinsuccess: : : ', response);
 
             alert('Successfully login');
             // CALLING RESET FORM FUNCTION
@@ -57,7 +56,6 @@ const SignInForm = () => {
                     break;
 
                 default:
-                    console.log(error);
                     break;
             }
         }

@@ -48,7 +48,6 @@ const SignUpForm = () => {
         try {
             // DEFAULT WAY...
             // const response = await createAuthUserWithEmailAndPassword(email, password);
-            // console.log(response.user);
             // DEPRECATED USER FROM RESPONSE
             const { user } = await createAuthUserWithEmailAndPassword(
                 email,

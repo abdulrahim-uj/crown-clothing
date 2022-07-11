@@ -11,7 +11,6 @@ const CategoriesPreview = () => {
             {
                 Object.keys(categoriesMap).map(title => {
                     const products = categoriesMap[title];
-                    console.log('PRODUCTS ARRAY', products);
                     return <CategoryPreview key={title} titleValue={title} productsArray={products} />
                 })
             }
