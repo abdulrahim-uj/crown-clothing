@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { onAuthStateChangedListner, createUserDocumentFromAuth } from "../utils/firebase/firebase.utils";
+import { createActionForDispatch } from "../utils/reducer/reducer.utils";
 
 // ACTUAL VALUE YOU WANT TO ACCESS
 export const UserContext = createContext(
@@ -57,9 +58,14 @@ export const UserProvider = ({children}) => {
 
     // SET CURRENT USER FUNCTION
     const setCurrentUser = (user) => {
-        dispatch({
-            type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user
-        });
+        dispatch(
+            createActionForDispatch(USER_ACTION_TYPES.SET_CURRENT_USER, user)
+            /*
+            {
+                type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user
+            }
+            */
+        );
     };
 
     // VALUE IS AN ATTRIBUTE OF USERPROVIDER, THAT ACCESS AND PASSING CURRENT USERS

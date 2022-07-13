@@ -1,5 +1,4 @@
-import { createContext, useReducer } from "react";
-import { createActionForDispatch } from "../utils/reducer/reducer.utils";
+import { createContext, useState, useEffect, useReducer } from "react";
 
 // CART CONTEXT
 export const CartContext = createContext({
@@ -119,23 +118,14 @@ export const CartProvider = ({ children }) => {
             return total + cartItem.quantity;
         }, 0);
 
-        dispatch(
-            createActionForDispatch(CART_ACTION_TYPES.SET_CART_ITEMS, {
+        dispatch({
+            type: CART_ACTION_TYPES.SET_CART_ITEMS, 
+            payload: {
                 cartItems: newCartItems,
                 cartTotal: newCartTotal,
                 cartCount: newCartCount,
-            })
-            /*
-            {
-                type: CART_ACTION_TYPES.SET_CART_ITEMS, 
-                payload: {
-                    cartItems: newCartItems,
-                    cartTotal: newCartTotal,
-                    cartCount: newCartCount,
-                }
             }
-            */
-        )
+        })
     };
 
     const addItemToCart = (productToAdd) => {
@@ -154,14 +144,9 @@ export const CartProvider = ({ children }) => {
     };
 
     const setIsCartOpen = (valBoolean) => {
-        dispatch(
-            createActionForDispatch(CART_ACTION_TYPES.SET_IS_CART_OPEN, valBoolean)
-            /*
-            {
-                type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: valBoolean,
-            }
-            */
-        );
+        dispatch({
+            type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: valBoolean,
+        });
     }
 
     const value = {
