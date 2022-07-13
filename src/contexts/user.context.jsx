@@ -18,8 +18,6 @@ export const USER_ACTION_TYPES = {
 
 // REDUCER
 const userReducer = (state, action) => {
-    console.log('DISPATCH: : : -->');
-    console.log('ACTION: : : -->', action);
     // DESTRUCTURE THE ACTION
     const { type, payload } = action;
     
@@ -51,10 +49,8 @@ export const UserProvider = ({children}) => {
         // GET BACK FROM REDUCER --> stateObject & dispatchFunction
         state, dispatch
     ] = useReducer(userReducer, INITIAL_STATE);
-    console.log('SATET: : : -->', state);
     // DE STRUCTURE THE STATE
     const { currentUser } = state;
-    console.log('CURRENT USER: : : -->', currentUser);
 
     // SET CURRENT USER FUNCTION
     const setCurrentUser = (user) => {
