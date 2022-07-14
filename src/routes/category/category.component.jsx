@@ -6,13 +6,13 @@ import { useState, useEffect, Fragment } from "react";
 import ProductCard from "../../components/product-card/product-card.component";
 
 const Category = () => {
-    const { paramCategory } = useParams();
-
+    const { paramCategory } = useParams();  //get passed url parameter values
     const categoriesMap = useSelector(selectCategoriesMap);
-
     const [products, setProducts] = useState(categoriesMap[paramCategory]);
+    console.log('render/re-render category component');
 
     useEffect(() => {
+        console.log('effect fired calling setProducts');
         setProducts(categoriesMap[paramCategory]);
     },
     [paramCategory, categoriesMap]);
