@@ -69,40 +69,7 @@ export const getCategoriesAndDocuments = async () => {
     const query_1 = query(collectionRef);
     // using snapshot
     const querySnapshot = await getDocs(query_1);
-    const categoryMap = querySnapshot.docs.reduce((accumilator, docSnapshot) => {
-        /*
-        {
-            hats: {
-                title: "Hats",
-                items: [
-                    {
-                        id: 1,
-                        name: "Brown Brim",
-                        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-                        price: 25,
-                    },
-                    {...}...
-                ] 
-            },
-            sneakers: {
-                title: "Sneakers",
-                items: [
-                    {
-                        id: 1,
-                        name: "Brown Brim",
-                        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
-                        price: 25,
-                    },
-                    {...}...
-                ] 
-            },
-        */
-        // De structure the items
-        const { title, items } = docSnapshot.data();
-        accumilator[title.toLowerCase()] = items;
-        return accumilator;
-    }, {});
-    return categoryMap;
+    return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 };
 
 export const createUserDocumentFromAuth = async (
