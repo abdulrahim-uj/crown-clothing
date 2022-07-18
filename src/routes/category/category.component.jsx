@@ -9,10 +9,8 @@ const Category = () => {
     const { paramCategory } = useParams();  //get passed url parameter values
     const categoriesMap = useSelector(selectCategoriesMap);
     const [products, setProducts] = useState(categoriesMap[paramCategory]);
-    console.log('render/re-render category component');
 
     useEffect(() => {
-        console.log('effect fired calling setProducts');
         setProducts(categoriesMap[paramCategory]);
     },
     [paramCategory, categoriesMap]);
