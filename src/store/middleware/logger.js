@@ -5,11 +5,11 @@ export const loggerMiddleware = (store) => (next) => (action) => {
         return next(action);
     }
 
-    console.log("type: ", action.type);
-    console.log("payload: ", action.payload);
-    console.log("currentState: ", store.getState());
+    console.log("logger.js: loggerMiddleware: type: action.type: ", action.type);
+    console.log("logger.js: loggerMiddleware: payload: action.payload: ", action.payload);
+    console.log("logger.js: loggerMiddleware: currentState: store.getState(): ", store.getState());
 
     next(action);
 
-    console.log("next state: ", store.getState());
+    console.log("logger.js: loggerMiddleware: next state: store.getState(): ", store.getState());
 };
