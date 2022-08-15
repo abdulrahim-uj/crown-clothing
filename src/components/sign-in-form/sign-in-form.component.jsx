@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-    //signInWithGooglePopup,    //REMOVED FOR USING REDUX-SAGA
-    signInUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
+// import {
+//     //signInWithGooglePopup,    //REMOVED FOR USING REDUX-SAGA
+//     // signInUserWithEmailAndPassword,      //REMOVED FOR USING REDUX-SAGA
+// } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-in-form.styles.scss';
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
-import { googleSignInStart } from "../../store/user/user.action";
+import { googleSignInStart, emailSignInStart } from "../../store/user/user.action";
 
 // SET DEFAULT VALUES ON COMPONENT DID MOUNT TIME
 const defaultFormFields = {
@@ -44,8 +44,8 @@ const SignInForm = () => {
         event.preventDefault();     //PREVENT BROWSER DEFAULTS
 
         try {
-            const response = await signInUserWithEmailAndPassword(email, password);
-
+            // const response = await signInUserWithEmailAndPassword(email, password);  //REMOVED FOR USING REDUX-SAGA
+            dispatch(emailSignInStart(email, password))
             alert('Successfully login');
             // CALLING RESET FORM FUNCTION
             resetFormFields();
