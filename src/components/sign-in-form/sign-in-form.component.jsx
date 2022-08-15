@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
-    signInWithGooglePopup,
+    //signInWithGooglePopup,    //REMOVED FOR USING REDUX-SAGA
     signInUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-in-form.styles.scss';
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
+import { googleSignInStart } from "../../store/user/user.action";
 
 // SET DEFAULT VALUES ON COMPONENT DID MOUNT TIME
 const defaultFormFields = {
@@ -14,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+    const dispatch = useDispatch();
     // USING SET & USE STATE & TAKE DEFAULT VALUES TO FORMFIELDS
     const [formFields, setFormFields] = useState(defaultFormFields);
     // DEPRECATED VALUES FROM FORMFIELDS
@@ -28,7 +31,8 @@ const SignInForm = () => {
     };
     // SIGN IN WITH GOOGLE ON CLICK BUTTON
     const signInWithGoogle = async () => {
-        await signInWithGooglePopup();
+        // await signInWithGooglePopup();   // REMOVED FOR USING REDUX-SAGA
+        dispatch(googleSignInStart())
     };
 
     // FORM RESET AFTER FORM SUBMITION SUCCESS MESSAGE
