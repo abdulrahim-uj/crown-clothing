@@ -126,3 +126,17 @@ export const signOutUser = async () => {
 export const onAuthStateChangedListner = (callback) => {
     return onAuthStateChanged(auth, callback);
 };
+
+// FOR SAGA SECTIONS
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+            auth, 
+            (userAuth) => {
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        )
+    })
+}

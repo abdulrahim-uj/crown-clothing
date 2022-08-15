@@ -9,13 +9,14 @@ import Shop from "./routes/shop/shop.component";
 import CheckOut from "./routes/checkout/checkout.component";
 import { setCurrentUser } from "./store/user/user.action";
 
-import { onAuthStateChangedListner, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils";
+import { onAuthStateChangedListner, createUserDocumentFromAuth, getCurrentUser } from "./utils/firebase/firebase.utils";
 
 const App = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
+        /* REMOVED: Redux-Saga: Converting onAuthSateChanged Listener to Promise
         const unsubscribe = onAuthStateChangedListner((user) => {
             if (user) {
                 createUserDocumentFromAuth(user);
@@ -23,6 +24,10 @@ const App = () => {
             dispatch(setCurrentUser(user));
         });
         return unsubscribe
+        */
+       getCurrentUser().then((user) => {
+        return console.log('App.js: useEffect: getCurrentUser:-->firebase.utils.js: ', user);
+       })
     }, [dispatch]);
 
     return (
