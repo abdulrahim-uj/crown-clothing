@@ -7,9 +7,7 @@ import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import CheckOut from "./routes/checkout/checkout.component";
-import { setCurrentUser } from "./store/user/user.action";
-
-import { onAuthStateChangedListner, createUserDocumentFromAuth, getCurrentUser } from "./utils/firebase/firebase.utils";
+import { checkUserSession } from "./store/user/user.action";
 
 const App = () => {
 
@@ -25,9 +23,7 @@ const App = () => {
         });
         return unsubscribe
         */
-       getCurrentUser().then((user) => {
-        return console.log('App.js: useEffect: getCurrentUser:-->firebase.utils.js: ', user);
-       })
+       dispatch(checkUserSession());
     }, [dispatch]);
 
     return (

@@ -101,7 +101,8 @@ export const createUserDocumentFromAuth = async (
     }
     // if user data exist
     // nothoing todo, just return the userAuth
-    return userDocRef;
+    /* return userDocRef; REMOVED FOR USING REDUX-SAGA*/
+    return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
