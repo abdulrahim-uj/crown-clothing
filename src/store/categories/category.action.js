@@ -1,6 +1,6 @@
 import CATEGORIES_ACTION_TYPES from "./category.types";
 import { createActionForDispatch } from "../../utils/reducer/reducer.utils";
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+// import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
 /* REMOVED USING REDUX_THUNK
 export const setCategories = (categoriesArray) => {
@@ -31,6 +31,7 @@ export const fetchCategoriesFailed = (error) => {
     );
 };
 
+/*  REMOVED FOR REMOVED REDUX-THUNK AND USING REDUX-SAGA
 export const fetchCategoriesThunkAsync = () => async(dispatchfunc) => {
     dispatchfunc(fetchCategoriesStart());
     
@@ -41,3 +42,4 @@ export const fetchCategoriesThunkAsync = () => async(dispatchfunc) => {
         dispatchfunc(fetchCategoriesFailed(error));
     }
 }
+*/
