@@ -24,3 +24,15 @@ export const signInSuccess = (user) => {
 export const signInFailed = (error) => {
     return createActionForDispatch(USER_ACTION_TYPES.SIGN_IN_FAILED, error)
 }
+
+export const signUpStart = (displayName, email, password) => {
+    return createActionForDispatch(USER_ACTION_TYPES.SIGN_UP_START, { displayName, email, password })
+}
+
+export const signUpSuccess = (user, additionalDetails) => {
+    return createActionForDispatch(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails })
+}
+
+export const signUpFailed = (error) => {
+    return createActionForDispatch(USER_ACTION_TYPES.SIGN_UP_FAILED, error)
+}

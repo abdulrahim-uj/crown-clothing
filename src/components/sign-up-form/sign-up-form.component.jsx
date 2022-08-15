@@ -1,10 +1,12 @@
 import { useState } from "react";
-import {
+/*import {
     createAuthUserWithEmailAndPassword,
     createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
+} from "../../utils/firebase/firebase.utils"; REMOVED FOR USING REDUX-SAGA */
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 import FormInput from "../form-input/form-input.component";
-import './sign-up-form.styles.scss';
+import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
 // import { UserContext } from "../../contexts/user.context";
 
@@ -17,6 +19,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+    const dispatch = useDispatch();
     // USING SET & USE STATE & TAKE DEFAULT VALUES TO FORMFIELDS
     const [formFields, setFormFields] = useState(defaultFormFields);
     // DEPRECATED VALUES FROM FORMFIELDS
@@ -28,7 +31,7 @@ const SignUpForm = () => {
     // ON CHANGE HANDLER TRIGGERING EVERY KEY PRESS ON INPUT FILEDS
     const onChangeHandler = (event) => {
         // const name = event.target.name;      // ASSIGN VALUES TO VARIALBE NAME IN DEFAULT PROCEDURE
-        const { name, value } = event.target;   //DEPRECATED VALUES FROM EVENT.TARGET
+        const { name, value } = event.target; //DEPRECATED VALUES FROM EVENT.TARGET
         // SET VALUES TO FORM FIELDS
         setFormFields({ ...formFields, [name]: value });
     };
@@ -38,7 +41,7 @@ const SignUpForm = () => {
     };
     // FORM SUBMIT HANDLER TO STORE DATA TO DB
     const onSubmitHandler = async (event) => {
-        event.preventDefault();     //PREVENT BROWSER DEFAULTS
+        event.preventDefault(); //PREVENT BROWSER DEFAULTS
         // CHECK PASSWORD & CONFORM PASSWORD ARE SAME OR NOT
         if (password !== conformPassword) {
             alert("Your passwords does not match!");
@@ -49,6 +52,7 @@ const SignUpForm = () => {
             // DEFAULT WAY...
             // const response = await createAuthUserWithEmailAndPassword(email, password);
             // DEPRECATED USER FROM RESPONSE
+            /*
             const { user } = await createAuthUserWithEmailAndPassword(
                 email,
                 password
@@ -59,7 +63,9 @@ const SignUpForm = () => {
             
             // PASSING RESPONSE.USER VALUES AND EXTRA CUSTOM VALUE 'DISPLAY NAME'
             await createUserDocumentFromAuth(user, { displayName });
-
+            REMOVED FOR USING REDUX-SAGA
+            */
+            dispatch(signUpStart(displayName, email, password));
             alert("User succefully created");
             // CALLING RESET FORM FUNCTION
             resetFormFields();
@@ -84,7 +90,7 @@ const SignUpForm = () => {
             <form onSubmit={onSubmitHandler}>
                 {/* FORMINPUT IS GENERALIZED FORM COMPONENT*/}
                 <FormInput
-                    label={'Display Name'}
+                    label={"Display Name"}
                     type={"text"}
                     name="displayName"
                     required
@@ -92,7 +98,7 @@ const SignUpForm = () => {
                     onChange={onChangeHandler}
                 />
                 <FormInput
-                    label={'E-mail'}
+                    label={"E-mail"}
                     type={"email"}
                     name="email"
                     required
@@ -100,7 +106,7 @@ const SignUpForm = () => {
                     onChange={onChangeHandler}
                 />
                 <FormInput
-                    label={'Password'}
+                    label={"Password"}
                     type={"password"}
                     name="password"
                     required
@@ -108,7 +114,7 @@ const SignUpForm = () => {
                     onChange={onChangeHandler}
                 />
                 <FormInput
-                    label={'Confirm Password'}
+                    label={"Confirm Password"}
                     type={"password"}
                     name="conformPassword"
                     required
