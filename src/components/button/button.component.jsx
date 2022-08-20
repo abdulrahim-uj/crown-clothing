@@ -1,4 +1,4 @@
-import { BaseButton, GoogleSignInButton, InvertedButton } from './button.styles';
+import { BaseButton, GoogleSignInButton, InvertedButton, ButtonSpinner } from './button.styles';
 
 /*
 3 different buttons
@@ -23,10 +23,10 @@ const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) => ({
 }[buttonType]);
 
 // children will get button name eg: <button>Sign Up</button> so, children value is 'Sign Up'
-const Button = ({children, buttonType, ...otherProps}) => {
+const Button = ({children, buttonType, isLoading, ...otherProps}) => {
     const CustomButton = getButton(buttonType);
     return (
-        <CustomButton {...otherProps}>{children}</CustomButton>
+        <CustomButton disabled={isLoading} {...otherProps}>{isLoading ? <ButtonSpinner /> : children}</CustomButton>
     );
 };
 
